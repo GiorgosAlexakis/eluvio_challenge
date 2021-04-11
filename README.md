@@ -128,17 +128,17 @@ We can also,as mentioned before display the dependencies(test case of finding co
 
 ![dependency option render](https://user-images.githubusercontent.com/58263228/114313147-facbdd80-9afd-11eb-811e-062fd0000652.png)
 
-### Some more examples:
+## Some more examples:
 
-Drug query:
+#### Drug query:
 ![phraserender6](https://user-images.githubusercontent.com/58263228/114313213-5007ef00-9afe-11eb-9d21-4d0d78e8c002.png)
 
-Banks query and displaying only organizations:
+#### Banks query and displaying only organizations:
 ![phrase5](https://user-images.githubusercontent.com/58263228/114313228-5a29ed80-9afe-11eb-9aa4-d30504400e5f.png)
 
-Conflict with preposition(in,about) and displaying only the countries:
+#### Conflict with preposition(in,about) and displaying only the countries:
 ![dependency-render2](https://user-images.githubusercontent.com/58263228/114313233-631abf00-9afe-11eb-9793-9615a6ce448c.png)
 
-Obama query and displaying only countries:
+#### Obama query and displaying only countries:
 ![obama-countries](https://user-images.githubusercontent.com/58263228/114313245-70d04480-9afe-11eb-9413-ecdfd1b22191.png)
 
