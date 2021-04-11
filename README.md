@@ -140,12 +140,12 @@ Obama query and displaying only countries:
 ![obama-countries](https://user-images.githubusercontent.com/58263228/114313245-70d04480-9afe-11eb-9413-ecdfd1b22191.png)
 
 ### Some other ideas include:
-* finding all mentions of "ministry" and finding what country's ministry it is("French Ministry of Defense") and then we add up the number of times it appears for each different ministry
+* find all mentions of "ministry" and determine which country's is mentioned for and its type (ex.the "French Ministry of Defense"), and then we add up the number of times it appears for each ministry.(ex.French Ministry of Defense appeared 10 times)
 * protestors (british protestors,violent protestors etc) and then again find their frequencies
 * find information that relates to money using the money tag of spacy
-* find news about elections so then you predict future outcomes in that country. If a dictatorship falls in a region then it might be prosperous to open a bussiness there
+* find news about elections so then you predict future outcomes in that country. If a dictatorship falls in a region then it might be prosperous to open a business there
 * CEO Names mentions
 * We can also exclude results based on age
-* Track news about someone or about a company for example throughout time.For example find all news related to Facebook and display them in a time linear order.
+* Track news about someone or about a company for example throughout time.For example find all news related to Facebook and display them in a linear order.
 
 However,there might be a better way to find related information like this. Writing queries like that requires us to monitor the dataset to come up with queries and we have to constantly write new queries if we want to find new information on new data.What better way is there? Unsupervised Clustering as you will see in notebook of Gensim.Spacy is still a very useful tool though if we wanted to write very specific queries based on a business' request. 
