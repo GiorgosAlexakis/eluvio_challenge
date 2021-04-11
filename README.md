@@ -130,15 +130,22 @@ We can also,as mentioned before display the dependencies(test case of finding co
 
 ## Some more examples:
 
-#### Drug query:
+"Drug":
 ![phraserender6](https://user-images.githubusercontent.com/58263228/114313213-5007ef00-9afe-11eb-9d21-4d0d78e8c002.png)
 
-#### Banks query and displaying only organizations:
+"Banks"(displaying only organizations):
 ![phrase5](https://user-images.githubusercontent.com/58263228/114313228-5a29ed80-9afe-11eb-9aa4-d30504400e5f.png)
 
-#### Conflict with preposition(in,about) and displaying only the countries:
-![dependency-render2](https://user-images.githubusercontent.com/58263228/114313233-631abf00-9afe-11eb-9793-9615a6ce448c.png)
-
-#### Obama query and displaying only countries:
+Obama query and displaying only countries:
 ![obama-countries](https://user-images.githubusercontent.com/58263228/114313245-70d04480-9afe-11eb-9413-ecdfd1b22191.png)
 
+Some other ideas include:
+* finding all mentions of "ministry" and finding what country's ministry it is("French Ministry of Defense") and then we add up the number of times it appears for each different ministry
+* protestors (british protestors,violent protestors etc) and then again find their frequencies
+* find information that relates to money using the money tag of spacy
+* find news about elections so then you predict future outcomes in that country. If a dictatorship falls in a region then it might be prosperous to open a bussiness there
+* CEO Names mentions
+* We can also exclude results based on age
+* Track news about someone or about a company for example throughout time.For example find all news related to Facebook and display them in a time linear order.
+
+However,there might be a better way to find related information like this. Writing queries like that requires us to monitor the dataset to come up with queries and we have to constantly write new queries if we want to find new information on new data.What better way is there? Unsupervised Clustering as you will see in notebook of Gensim.Spacy is still a very useful tool though if we wanted to write very specific queries based on a business' request. 
