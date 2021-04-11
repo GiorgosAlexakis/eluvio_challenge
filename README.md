@@ -8,9 +8,16 @@ Considering Eluvio's very large datasets I had to first  find the best performin
 
 ![spacy-benchmark](https://user-images.githubusercontent.com/58263228/114309621-758dfc00-9af0-11eb-911e-f75281d2e5ba.png)
 
+
+
+
+
 Spacy provides its users with pre-trained "pipelines" that can be installed as Python packages. 
 
 ![selected trained pipeline](https://user-images.githubusercontent.com/58263228/114309637-80489100-9af0-11eb-9bf4-721885a0c019.png)
+
+
+
 
 
 Below is a summary of the features spaCy is providing:
@@ -19,18 +26,18 @@ Below is a summary of the features spaCy is providing:
 
 
 
-Pretrained model used: en_core_web_lg (lg indicating the large volume of text it was pretrained on)
+**Pretrained model used:** en_core_web_lg (lg indicating the large volume of text it was pretrained on)
 
-Pipeline: ['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
+**Pipeline**: ['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 
 
-1.Tokenization: Segments text into words,punctuations marks,etc
-2.tok2vec: Transforms tokens into vectors and saves them in Token.vector. The library generates word vectors using an algorithm called word2vec under the hood.
-3.tagger: Assigning word types to tokens,like verb or noun.
-4.parser: Assigns syntantic dependency labels,describing the relations between individual tokens,like subject or object.
-5.ner: labelling named "real-world" objects, like persons,companies or locations.
-6.attribute_ruler: manages rule-based mappings and exceptions for all token-level attributes
-7.lemmatizer: Assigns the base forms of words. For example, the lemma of “was” is “be”, and the lemma of “rats” is “rat”.
+* **Tokenization**: Segments text into words,punctuations marks,etc
+* **tok2vec**: Transforms tokens into vectors and saves them in Token.vector. The library generates word vectors using an algorithm called word2vec under the hood.
+* **tagger**: Assigning word types to tokens,like verb or noun.
+* **parser**: Assigns syntantic dependency labels,describing the relations between individual tokens,like subject or object.
+* **ner**: labelling named "real-world" objects, like persons,companies or locations.
+* **attribute_ruler**: manages rule-based mappings and exceptions for all token-level attributes
+* **lemmatizer**: Assigns the base forms of words. For example, the lemma of “was” is “be”, and the lemma of “rats” is “rat”.
 
 
 This project also uses spaCy "projects".SpaCy projects let you manage and share end-to-end spaCy workflows for different use cases and domains, and orchestrate training, packaging and serving your custom pipelines. It also makes it easy to integrate many other tools. SpaCy projects also make it easy to integrate with many other tools.https://spacy.io/usage/projects
