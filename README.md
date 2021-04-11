@@ -99,7 +99,7 @@ Since, we are interested in extracting information from the dataset it makes sen
 
 However, spaCy has integration with **visual tools** (displaCy) that allows you to see important information in the results. It can display **entity tags** ,for example it can tell you if a keyword is a country or an organization and it can also display the dependencies of a sentence. With that in mind, if someone for example wants to find what countries might be going into war ,we can query the data about war and then display entity tags only for countries. A dependency example that I tried was to find sentences that include the verb "sue" and its direct objective. If someone wants to go a step further we can even save these tokens (for example all the companies that are getting sued) by reading the value of the dictionary of the patterns with the  name of the dependency that corresponds to it.
 
-#### Below are the phrase matcher test cases:
+Below are the phrase matcher test cases:
 
 ![phrasematchesjson](https://user-images.githubusercontent.com/58263228/114309656-93f3f780-9af0-11eb-8d30-63ef6ef32332.png)
 
@@ -107,14 +107,14 @@ However, spaCy has integration with **visual tools** (displaCy) that allows you 
 
 ![dependency matches](https://user-images.githubusercontent.com/58263228/114309692-b9810100-9af0-11eb-81df-d9385a46bb75.png)
 
-#### Result when quering for barack obama:
+Result when quering for barack obama:
 
 ![barack-all](https://user-images.githubusercontent.com/58263228/114309707-c9004a00-9af0-11eb-85a0-62c9f42e6ad8.png)
 
 This query uses this configuration in scripts/visualize.py(it doesn't exclude any entity tags):
 ![dependency option render](https://user-images.githubusercontent.com/58263228/114312942-374b0980-9afd-11eb-80b8-1364a113a90c.png)
 
-#### The "sue" example(we are only displaying organizations):
+The "sue" example(we are only displaying organizations):
 
 ![dependency3render](https://user-images.githubusercontent.com/58263228/114312907-0b2f8880-9afd-11eb-905f-a7e16781e867.png)
 
