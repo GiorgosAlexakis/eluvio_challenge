@@ -149,4 +149,8 @@ Obama query and displaying only countries:
 * We can also exclude results based on age
 * Track news about someone or about a company for example throughout time.For example find all news related to Facebook and display them in a linear order.
 
-However,there might be a better way to find related information like this. Writing queries like that requires us to monitor the dataset to come up with queries and we have to constantly write new queries if we want to find new information on new data.What better way is there? Unsupervised Clustering as you will see in notebook of Gensim.Spacy is still a very useful tool though if we wanted to write very specific queries based on a business' request. 
+However,there might be a better way to find related information like this. Writing queries like that requires us to monitor the dataset to come up with queries and we have to constantly write new queries if we want to find new information on new data.What better way is there? Unsupervised Clustering as you will see in notebook of Gensim.Spacy is still a very useful tool though if we wanted to write very specific queries based on a business' request. Also,unfortunately spacy doesn't always recognize tags correctly as in the example of the Obama Camp that gets recognized as a person instead of an organization. For these kind of problems we would have to train the dataset in order to recognize tags better.Prodigy is a tool that can used for that to easily annotate the dataset and then train using spaCy with pytorch or tensorflow. spaCy recently added to train with the state of the art transformers.
+
+https://github.com/explosion/spacy-transformers
+https://github.com/explosion/spacy-transformers
+https://github.com/explosion/spacy-transformers
