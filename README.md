@@ -93,7 +93,7 @@ in the project directory.
 | [`assets/phrasematches.json`](assets/phrasematches.json) | Local | JSON-formatted input phrase matches for testing |
 
 <!-- SPACY PROJECT: AUTO-GENERATED DOCS END (do not remove) -->
-#### Rule-based matching
+### Rule-based matching
 
 Since, we are interested in extracting information from the dataset it makes sense to use spaCy's **rule-matching**. Apart from being able to find keywords in the corpus file that gets produced during the preprocessing state. It also gives us the ability to **find relationships between tokens**, expand tokens to extract useful information. I will be testing some queries ,first some phrase matching rules then dependency matching rules. In the project I am saving the produced outputs in a json file, filtered based on upvotes where a hypothetical front-end developer could use. 
 
@@ -139,7 +139,7 @@ We can also,as mentioned before display the dependencies(test case of finding co
 Obama query and displaying only countries:
 ![obama-countries](https://user-images.githubusercontent.com/58263228/114313245-70d04480-9afe-11eb-9413-ecdfd1b22191.png)
 
-Some other ideas include:
+### Some other ideas include:
 * finding all mentions of "ministry" and finding what country's ministry it is("French Ministry of Defense") and then we add up the number of times it appears for each different ministry
 * protestors (british protestors,violent protestors etc) and then again find their frequencies
 * find information that relates to money using the money tag of spacy
