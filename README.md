@@ -95,9 +95,9 @@ in the project directory.
 <!-- SPACY PROJECT: AUTO-GENERATED DOCS END (do not remove) -->
 #### Rule-based matching
 
-Since, we are interested in extracting information from the dataset it makes sense to use spaCy's rule-matching. Apart from being able to find keywords in the corpus file that gets produced during the preprocessing state. It also gives us the ability to find relationships between tokens, expand tokens to extract useful information. I will be testing some queries ,first some phrase matching rules then dependency matching rules. In the project I am saving the produced outputs in a json file, filtered based on upvotes where a hypothetical front-end developer could use. 
+Since, we are interested in extracting information from the dataset it makes sense to use spaCy's **rule-matching**. Apart from being able to find keywords in the corpus file that gets produced during the preprocessing state. It also gives us the ability to **find relationships between tokens**, expand tokens to extract useful information. I will be testing some queries ,first some phrase matching rules then dependency matching rules. In the project I am saving the produced outputs in a json file, filtered based on upvotes where a hypothetical front-end developer could use. 
 
-However, spaCy has integration with **visual tools** (displaCy) that allows you to see important information in the results. It can display entity tags ,for example it can tell you if a keyword is a country or an organization and it can also display the dependencies of a sentence. With that in mind, if someone for example wants to find what countries might be going into war ,we can query the data about war and then display entity tags only for countries. A dependency example that I tried was to find sentences that include the verb "sue" and its direct objective. If someone wants to go a step further we can even save these tokens (for example all the companies that are getting sued) by reading the value of the dictionary of the patterns with the  name of the dependency that corresponds to it.
+However, spaCy has integration with **visual tools** (displaCy) that allows you to see important information in the results. It can display **entity tags** ,for example it can tell you if a keyword is a country or an organization and it can also display the dependencies of a sentence. With that in mind, if someone for example wants to find what countries might be going into war ,we can query the data about war and then display entity tags only for countries. A dependency example that I tried was to find sentences that include the verb "sue" and its direct objective. If someone wants to go a step further we can even save these tokens (for example all the companies that are getting sued) by reading the value of the dictionary of the patterns with the  name of the dependency that corresponds to it.
 
 #### Below are the phrase matcher test cases:
 
@@ -128,13 +128,17 @@ We can also,as mentioned before display the dependencies(test case of finding co
 
 ![dependency option render](https://user-images.githubusercontent.com/58263228/114313147-facbdd80-9afd-11eb-811e-062fd0000652.png)
 
-Some more examples:
+### Some more examples:
+
 Drug query:
 ![phraserender6](https://user-images.githubusercontent.com/58263228/114313213-5007ef00-9afe-11eb-9d21-4d0d78e8c002.png)
+
 Banks query and displaying only organizations:
 ![phrase5](https://user-images.githubusercontent.com/58263228/114313228-5a29ed80-9afe-11eb-9aa4-d30504400e5f.png)
-Conflict with preposition(in,about) and displaying only the countries
+
+Conflict with preposition(in,about) and displaying only the countries:
 ![dependency-render2](https://user-images.githubusercontent.com/58263228/114313233-631abf00-9afe-11eb-9793-9615a6ce448c.png)
+
 Obama query and displaying only countries:
 ![obama-countries](https://user-images.githubusercontent.com/58263228/114313245-70d04480-9afe-11eb-9413-ecdfd1b22191.png)
 
