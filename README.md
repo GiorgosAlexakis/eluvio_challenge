@@ -1,4 +1,4 @@
-# Eluvio CHallenge
+# Eluvio Challenge
 ### Introduction 
 
 We are being asked to "find a problem" to solve in a given Dataset from Eluvio. It contains small 
@@ -93,9 +93,11 @@ in the project directory.
 | [`assets/phrasematches.json`](assets/phrasematches.json) | Local | JSON-formatted input phrase matches for testing |
 
 <!-- SPACY PROJECT: AUTO-GENERATED DOCS END (do not remove) -->
+#### Rule-based matching
 
+Since, we are interested in extracting information from the dataset it makes sense to use spaCy's rule-matching. Apart from being able to find keywords in the corpus file that gets produced during the preprocessing state. It also gives us the ability to find relationships between tokens, expand tokens to extract useful information. I will be testing some queries ,first some phrase matching rules then dependency matching rules. In the project I am saving the produced outputs in a json file, filtered based on upvotes where a hypothetical front-end developer could use. 
 
-Since, we are interested in extracting information from the dataset it makes sense to use spaCy's "matchers".
+However, spaCy has integration with **visual tools** (displaCy) that allows you to see important information in the results. It can display entity tags ,for example it can tell you if a keyword is a country or an organization and it can also display the dependencies of a sentence. With that in mind, if someone for example wants to find what countries might be going into war ,we can query the data about war and then display entity tags only for countries. A dependency example that I tried was to find sentences that include the verb "sue" and its direct objective. If someone wants to go a step further we can even save these tokens (for example all the companies that are getting sued) by reading the value of the dictionary of the patterns with the  name of the dependency that corresponds to it.
 
 #### Below are the phrase matcher test cases:
 
@@ -109,4 +111,30 @@ Since, we are interested in extracting information from the dataset it makes sen
 
 ![barack-all](https://user-images.githubusercontent.com/58263228/114309707-c9004a00-9af0-11eb-85a0-62c9f42e6ad8.png)
 
+This query uses this configuration in scripts/visualize.py(it doesn't exclude any entity tags):
+![dependency option render](https://user-images.githubusercontent.com/58263228/114312942-374b0980-9afd-11eb-80b8-1364a113a90c.png)
+
+#### The "sue" example(we are only displaying organizations):
+
+![dependency3render](https://user-images.githubusercontent.com/58263228/114312907-0b2f8880-9afd-11eb-905f-a7e16781e867.png)
+
+It uses this configuration to display the results:
+
+![1](https://user-images.githubusercontent.com/58263228/114313106-d6700100-9afd-11eb-8c26-4b7c88127621.png)
+
+We can also,as mentioned before display the dependencies(test case of finding conflict and a preposition along with it):
+
+![dependency-with-dep-render2](https://user-images.githubusercontent.com/58263228/114313156-03241880-9afe-11eb-9ea5-600f50798bdb.png)
+
+![dependency option render](https://user-images.githubusercontent.com/58263228/114313147-facbdd80-9afd-11eb-811e-062fd0000652.png)
+
+Some more examples:
+Drug query:
+![phraserender6](https://user-images.githubusercontent.com/58263228/114313213-5007ef00-9afe-11eb-9d21-4d0d78e8c002.png)
+Banks query and displaying only organizations:
+![phrase5](https://user-images.githubusercontent.com/58263228/114313228-5a29ed80-9afe-11eb-9aa4-d30504400e5f.png)
+Conflict with preposition(in,about) and displaying only the countries
+![dependency-render2](https://user-images.githubusercontent.com/58263228/114313233-631abf00-9afe-11eb-9793-9615a6ce448c.png)
+Obama query and displaying only countries:
+![obama-countries](https://user-images.githubusercontent.com/58263228/114313245-70d04480-9afe-11eb-9413-ecdfd1b22191.png)
 
