@@ -97,15 +97,15 @@ in the project directory.
 
 Since, we are interested in extracting information from the dataset it makes sense to use spaCy's "matchers".
 
-#Below are the phrase matcher test cases:
+#### Below are the phrase matcher test cases:
 
 ![phrasematchesjson](https://user-images.githubusercontent.com/58263228/114309656-93f3f780-9af0-11eb-8d30-63ef6ef32332.png)
 
-#Below are the dependency matcher test cases
+#### Below are the dependency matcher test cases
 
 ![dependency matches](https://user-images.githubusercontent.com/58263228/114309692-b9810100-9af0-11eb-81df-d9385a46bb75.png)
 
-Result when quering for barack obama:
+#### Result when quering for barack obama:
 
 ![barack-all](https://user-images.githubusercontent.com/58263228/114309707-c9004a00-9af0-11eb-85a0-62c9f42e6ad8.png)
 
