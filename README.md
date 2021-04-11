@@ -130,6 +130,7 @@ We can also,as mentioned before display the dependencies(test case of finding co
 
 ## Some more examples:
 
+
 "Drug":
 ![phraserender6](https://user-images.githubusercontent.com/58263228/114313213-5007ef00-9afe-11eb-9d21-4d0d78e8c002.png)
 
