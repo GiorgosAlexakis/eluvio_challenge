@@ -1,4 +1,41 @@
-fefe
+### Introduction 
+
+We are being asked to "find a problem" to solve in a given Dataset from Eluvio. It contains small 
+titles of users which mainly seem to be about conflicts,geopolitical news,wars etc. The dataset  also gives us other information too(if they are adults,their username,upvotes,downvotes,etc). I decided to use spaCy at first but I also used gensim for unsupervised clustering.
+
+## spaCy
+Considering Eluvio's very large datasets I had to first  find the best performing open-source library in order to maximize speed and efficiency at which we process our data.Spacy is a very popular library that provide us with what we need.As we can see from its benchmarks it perfoms very well.
+
+![spacy-benchmark](https://user-images.githubusercontent.com/58263228/114309621-758dfc00-9af0-11eb-911e-f75281d2e5ba.png)
+
+Spacy provides its users with pre-trained "pipelines" that can be installed as Python packages. 
+
+![selected trained pipeline](https://user-images.githubusercontent.com/58263228/114309637-80489100-9af0-11eb-9bf4-721885a0c019.png)
+
+
+Below is a summary of the features spaCy is providing:
+
+![features overview](https://user-images.githubusercontent.com/58263228/114309647-863e7200-9af0-11eb-83b0-c8be00f20d89.png)
+
+
+
+Pretrained model used: en_core_web_lg (lg indicating the large volume of text it was pretrained on)
+
+Pipeline: ['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
+
+
+1.Tokenization: Segments text into words,punctuations marks,etc
+2.tok2vec: Transforms tokens into vectors and saves them in Token.vector. The library generates word vectors using an algorithm called word2vec under the hood.
+3.tagger: Assigning word types to tokens,like verb or noun.
+4.parser: Assigns syntantic dependency labels,describing the relations between individual tokens,like subject or object.
+5.ner: labelling named "real-world" objects, like persons,companies or locations.
+6.attribute_ruler: manages rule-based mappings and exceptions for all token-level attributes
+7.lemmatizer: Assigns the base forms of words. For example, the lemma of “was” is “be”, and the lemma of “rats” is “rat”.
+
+
+This project also uses spaCy "projects".SpaCy projects let you manage and share end-to-end spaCy workflows for different use cases and domains, and orchestrate training, packaging and serving your custom pipelines. It also makes it easy to integrate many other tools. SpaCy projects also make it easy to integrate with many other tools.https://spacy.io/usage/projects
+
+
 <!-- SPACY PROJECT: AUTO-GENERATED DOCS START (do not remove) -->
 
 # 🪐 spaCy Project: Eluvio
@@ -48,3 +85,20 @@ in the project directory.
 | [`assets/phrasematches.json`](assets/phrasematches.json) | Local | JSON-formatted input phrase matches for testing |
 
 <!-- SPACY PROJECT: AUTO-GENERATED DOCS END (do not remove) -->
+
+
+Since, we are interested in extracting information from the dataset it makes sense to use spaCy's "matchers".
+
+#Below are the phrase matcher test cases:
+
+![phrasematchesjson](https://user-images.githubusercontent.com/58263228/114309656-93f3f780-9af0-11eb-8d30-63ef6ef32332.png)
+
+#Below are the dependency matcher test cases
+
+![dependency matches](https://user-images.githubusercontent.com/58263228/114309692-b9810100-9af0-11eb-81df-d9385a46bb75.png)
+
+Result when quering for barack obama:
+
+![barack-all](https://user-images.githubusercontent.com/58263228/114309707-c9004a00-9af0-11eb-85a0-62c9f42e6ad8.png)
+
+
