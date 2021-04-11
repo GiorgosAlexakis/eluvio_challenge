@@ -1,0 +1,46 @@
+{
+  "1":
+  [{
+    "RIGHT_ID": "poses",
+    "RIGHT_ATTRS": {"ORTH": "poses"}
+  },
+  {
+    "LEFT_ID": "poses",
+    "REL_OP": ">",
+    "RIGHT_ID": "threat",
+    "RIGHT_ATTRS": {"ORTH": "threat"}
+  }],
+   "2":
+  [{
+    "RIGHT_ID": "conflict",
+    "RIGHT_ATTRS": {"ORTH": "conflict"}
+  },
+    {
+      "LEFT_ID": "conflict",
+      "REL_OP": ">",
+      "RIGHT_ID": "about",
+      "RIGHT_ATTRS": {
+        "DEP": "prep"
+      }
+    }],
+   "3":
+  [{
+        "RIGHT_ID": "anchor_sue",
+        "RIGHT_ATTRS": {"ORTH": "sue"}
+    },
+    {
+        "LEFT_ID": "anchor_sue",
+        "REL_OP": ">",
+        "RIGHT_ID": "founded_subject",
+        "RIGHT_ATTRS": {"DEP": "nsubj"}
+    },
+    {
+        "LEFT_ID": "anchor_sue",
+        "REL_OP": ">",
+        "RIGHT_ID": "founded_object",
+        "RIGHT_ATTRS": {"DEP": "dobj"}
+    }]
+
+}
+
+

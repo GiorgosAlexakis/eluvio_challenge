@@ -1,0 +1,108 @@
+preprocess:
+  cmd: python -m spacy run preprocess
+  script:
+    - python scripts/preprocess.py assets/Eluvio_DS_Challenge.csv corpus/eluvio_processed_dataset.spacy
+  deps:
+    - path: assets/Eluvio_DS_Challenge.csv
+      md5: 5e94a32eae920452034596745e07b947
+    - path: scripts/preprocess.py
+      md5: f44b267e6dcdc025089fb415a2c50061
+  outs:
+    - path: corpus/eluvio_processed_dataset.spacy
+      md5: 233ef7a0684deabb54e0d660f0e44362
+  spacy_version: 3.0.5
+  spacy_git_version: 53a3b967a
+phrasematch:
+  cmd: python -m spacy run phrasematch
+  script:
+    - python scripts/matcher.py phrase assets/Eluvio_DS_Challenge.csv corpus/eluvio_processed_dataset.spacy
+      assets/phrasematches.json outputs/matches_keys/phrase_matches_keys.json outputs/matches_text/phrase_matches_text.json
+  deps:
+    - path: assets/Eluvio_DS_Challenge.csv
+      md5: 5e94a32eae920452034596745e07b947
+    - path: corpus/eluvio_processed_dataset.spacy
+      md5: 233ef7a0684deabb54e0d660f0e44362
+    - path: assets/phrasematches.json
+      md5: efb23a0e91b65e8f8a364945a8ba28ca
+    - path: scripts/matcher.py
+      md5: d3fc2a186950b0331f3418f8c3bf88d1
+  outs:
+    - path: outputs/matches_keys/phrase_matches_keys.json
+      md5: 8614c6eb11e28bd36eaea40bcf5fbf99
+    - path: outputs/matches_texts/phrase_matches_text.json
+      md5: null
+  spacy_version: 3.0.5
+  spacy_git_version: 53a3b967a
+VisualizeEntityResults:
+  cmd: python -m spacy run VisualizeEntityResults
+  script:
+    - python scripts/visualize_results.py  corpus/eluvio_processed_dataset.spacy outputs/phrase_matches_keys.json
+      outputs/entity_page.html
+  deps:
+    - path: corpus/eluvio_processed_dataset.spacy
+      md5: 233ef7a0684deabb54e0d660f0e44362
+    - path: outputs/phrase_matches_keys.json
+      md5: 8614c6eb11e28bd36eaea40bcf5fbf99
+    - path: scripts/visualize_results.py
+      md5: 858f946a3cb00d078dbaef71fb0ad061
+  outs:
+    - path: outputs/entity_page.html
+      md5: dabc166f541e5b7415e7e965a1e827a1
+  spacy_version: 3.0.5
+  spacy_git_version: 53a3b967a
+dependencymatch:
+  cmd: python -m spacy run dependencymatch
+  script:
+    - python scripts/matcher.py dependency assets/Eluvio_DS_Challenge.csv corpus/eluvio_processed_dataset.spacy
+      assets/dependencymatches.json outputs/matches_keys/dependency_matches_keys.json
+      outputs/matches_text/dependency_matches_text.json
+  deps:
+    - path: assets/Eluvio_DS_Challenge.csv
+      md5: 5e94a32eae920452034596745e07b947
+    - path: corpus/eluvio_processed_dataset.spacy
+      md5: 233ef7a0684deabb54e0d660f0e44362
+    - path: assets/dependencymatches.json
+      md5: 5b364a840a239047bfde8d1ff8851590
+    - path: scripts/matcher.py
+      md5: d3fc2a186950b0331f3418f8c3bf88d1
+  outs:
+    - path: outputs/matches_keys/dependency_matches_keys.json
+      md5: 199c6635fac55352121f6f749993dcbb
+    - path: outputs/matches_texts/dependency_matches_text.json
+      md5: null
+  spacy_version: 3.0.5
+  spacy_git_version: 53a3b967a
+VisualizePhraseResults:
+  cmd: python -m spacy run VisualizePhraseResults
+  script:
+    - python scripts/visualize_results.py  phrase corpus/eluvio_processed_dataset.spacy
+      outputs/matches_keys/phrase_matches_keys.json outputs/matches_renders
+  deps:
+    - path: corpus/eluvio_processed_dataset.spacy
+      md5: 233ef7a0684deabb54e0d660f0e44362
+    - path: outputs/matches_keys/phrase_matches_keys.json
+      md5: 8614c6eb11e28bd36eaea40bcf5fbf99
+    - path: scripts/visualize_results.py
+      md5: 1c48841f61ebf080d000247a2dfbff9a
+  outs:
+    - path: outputs/matches_renders
+      md5: 6d130041b5c3c1234f8e9f5ffbfdec0b
+  spacy_version: 3.0.5
+  spacy_git_version: 53a3b967a
+VisualizeDependencyResults:
+  cmd: python -m spacy run VisualizeDependencyResults
+  script:
+    - python scripts/visualize_results.py dependency corpus/eluvio_processed_dataset.spacy
+      outputs/matches_keys/dependency_matches_keys.json outputs/matches_renders
+  deps:
+    - path: corpus/eluvio_processed_dataset.spacy
+      md5: 233ef7a0684deabb54e0d660f0e44362
+    - path: outputs/matches_keys/dependency_matches_keys.json
+      md5: 199c6635fac55352121f6f749993dcbb
+    - path: scripts/visualize_results.py
+      md5: 1c48841f61ebf080d000247a2dfbff9a
+  outs:
+    - path: outputs/matches_renders
+      md5: 6a8cece968b3df8fa79c2770b8067e00
+  spacy_version: 3.0.5
+  spacy_git_version: 53a3b967a

@@ -1,0 +1,111 @@
+title: "Eluvio"
+description: " Eluvio's challenge in predictive modelling or analytical insights for business use cases  "
+# Variables can be referenced across the project.yml using ${vars.var_name}
+vars:
+  config: "config.cfg"
+  name: "eluvio_projects"
+  version: "0.0.0"
+  dataset: "Eluvio_DS_Challenge"
+  processed_dataset: "eluvio_processed_dataset"
+  phrase_matches_input: "phrasematches"
+  phrase_matches_keys: "phrase_matches_keys"
+  phrase_matches_text: "phrase_matches_text"
+  dependency_matches_input: "dependencymatches"
+  dependency_matches_keys: "dependency_matches_keys"
+  dependency_matches_text: "dependency_matches_text"
+
+
+# These are the directories that the project needs. The project CLI will make
+# sure that they always exist.
+directories: ["assets", "configs", "scripts", "corpus","outputs","outputs/matches_keys","outputs/matches_text","outputs/matches_renders"]
+
+# Assets that should be downloaded or available in the directory. We're shipping
+# them with the project, so they won't have to be downloaded.
+
+assets:
+  - dest: "assets/${vars.dataset}.csv"
+    description: "CSV data given from Eluvio"
+  - dest: "assets/${vars.phrase_matches_input}.json"
+    description: "JSON-formatted input phrase matches for testing"
+
+
+
+# Workflows are sequences of commands (see below) executed in order. You can
+# run them via "spacy project run [workflow]". If a commands's inputs/outputs
+# haven't changed, it won't be re-run.
+workflows:
+  all:
+    - preprocess
+    - phrasematch
+    - dependencymatch
+    - VisualizePhraseResults
+    - VisualizeDependencyResults
+
+# Project commands, specified in a style similar to CI config files (e.g. Azure
+# pipelines). The name is the command name that lets you trigger the command
+# via "spacy project run [command] [path]". The help message is optional and
+# shown when executing "spacy project run [optional command] [path] --help".
+commands:
+  - name: "preprocess"
+    help: "Convert the data to spaCy's binary format and output the result in the corpus directory "
+    script:
+      - "python scripts/preprocess.py assets/${vars.dataset}.csv corpus/${vars.processed_dataset}.spacy"
+
+    deps:
+      - "assets/${vars.dataset}.csv"
+      - "scripts/preprocess.py"
+    outputs:
+      - "corpus/${vars.processed_dataset}.spacy"
+
+  - name: "phrasematch"
+    help: "Runs some phrase matching examples from a json file(assets/phrasematches.json)"
+    script:
+      - "python scripts/matcher.py phrase assets/${vars.dataset}.csv corpus/${vars.processed_dataset}.spacy assets/${vars.phrase_matches_input}.json outputs/matches_keys/${vars.phrase_matches_keys}.json outputs/matches_text/${vars.phrase_matches_text}.json"
+
+    deps:
+      - "assets/${vars.dataset}.csv"
+      - "corpus/${vars.processed_dataset}.spacy"
+      - "assets/${vars.phrase_matches_input}.json"
+      - "scripts/matcher.py"
+    outputs:
+      - "outputs/matches_keys/${vars.phrase_matches_keys}.json"
+      - "outputs/matches_texts/${vars.phrase_matches_text}.json"
+
+  - name: "dependencymatch"
+    help: "Runs some dependency matching examples from a json file(assets/dependencymatches.json)"
+    script:
+      - "python scripts/matcher.py dependency assets/${vars.dataset}.csv corpus/${vars.processed_dataset}.spacy assets/${vars.dependency_matches_input}.json outputs/matches_keys/${vars.dependency_matches_keys}.json outputs/matches_text/${vars.dependency_matches_text}.json"
+
+    deps:
+      - "assets/${vars.dataset}.csv"
+      - "corpus/${vars.processed_dataset}.spacy"
+      - "assets/${vars.dependency_matches_input}.json"
+      - "scripts/matcher.py"
+    outputs:
+      - "outputs/matches_keys/${vars.dependency_matches_keys}.json"
+      - "outputs/matches_texts/${vars.dependency_matches_text}.json"
+
+
+  - name: "VisualizePhraseResults"
+    help: "It visualizes phrase matched results "
+    script:
+      - "python scripts/visualize_results.py  phrase corpus/${vars.processed_dataset}.spacy outputs/matches_keys/${vars.phrase_matches_keys}.json outputs/matches_renders"
+
+    deps:
+      - "corpus/${vars.processed_dataset}.spacy"
+      - "outputs/matches_keys/${vars.phrase_matches_keys}.json"
+      - "scripts/visualize_results.py"
+    outputs:
+      - "outputs/matches_renders"
+
+  - name: "VisualizeDependencyResults"
+    help: "It visualizes dependency matched results "
+    script:
+      - "python scripts/visualize_results.py dependency corpus/${vars.processed_dataset}.spacy outputs/matches_keys/${vars.dependency_matches_keys}.json outputs/matches_renders"
+
+    deps:
+      - "corpus/${vars.processed_dataset}.spacy"
+      - "outputs/matches_keys/${vars.dependency_matches_keys}.json"
+      - "scripts/visualize_results.py"
+    outputs:
+      - "outputs/matches_renders"
