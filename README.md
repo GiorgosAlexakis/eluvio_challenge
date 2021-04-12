@@ -221,3 +221,7 @@ However,there might be a better way to find related information like this. Writi
 
 https://github.com/explosion/spacy-transformers
 
+#### Testing the project:
+I included the auto-generated requirements from pycharm, in the end I queried the whole dataset but the corpus dataset was too large to upload in github.However,the output files are the results from using the whole dataset so you open them up.If you want to test on a smaller part of the dataset just change this line in the preprocess script:
+texts = pd.read_csv(input_path)[:desired_number_of_lines]
+
