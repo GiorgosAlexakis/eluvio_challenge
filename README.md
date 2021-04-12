@@ -224,4 +224,10 @@ https://github.com/explosion/spacy-transformers
 #### Testing the project:
 I included the auto-generated requirements from pycharm, in the end I queried the whole dataset but the corpus dataset was too large to upload in github.However,the output files are the results from using the whole dataset so you open them up.If you want to test on a smaller part of the dataset just change this line in the preprocess script:
 texts = pd.read_csv(input_path)[:desired_number_of_lines]
+Also don't forget to download the pretrained model:
+python -m spacy download en_core_web_lg
 
+#### Performance
+
+* The matchers allow you to check a token for a match through an assigned id instead of quering the whole dataset for every different phrase match.Also,I think spaCy allows you to define custom user data in DocBin.store_user_data so you don't have to read from csv but instead read from the serialized object.
+* spaCy gives you also the ability to stream the input data: docs = nlp.pipe(texts, n_process=2, batch_size=2000). Gensim does not give you the ability to stream data like this but it would be easy to combine spaCy's pipeline with gensim.So if I were to continue this project I would fix the issues mentioned and combine spaCy with gensim.However, I did try some interesting things in gensim though so please make sure to check it out in the linked repository.
