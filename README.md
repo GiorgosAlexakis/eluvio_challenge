@@ -99,22 +99,100 @@ Since, we are interested in extracting information from the dataset it makes sen
 
 However, spaCy has integration with **visual tools** (displaCy) that allows you to see important information in the results. It can display **entity tags** ,for example it can tell you if a keyword is a country or an organization and it can also display the dependencies of a sentence. With that in mind, if someone for example wants to find what countries might be going into war ,we can query the data about war and then display entity tags only for countries. A dependency example that I tried was to find sentences that include the verb "sue" and its direct objective. If someone wants to go a step further we can even save these tokens (for example all the companies that are getting sued) by reading the value of the dictionary of the patterns with the  name of the dependency that corresponds to it.
 
-Below are the phrase matcher test cases:
+#### Phrase-Matcher queries:
+```json
+{
+  "1": [
+    "Barack Obama"
+  ],
+  "2": [
+    "free trade"
+  ],
+  "3": [
+    "war",
+    "missiles"
+  ],
+  "4": [
+    "warship"
+  ],
+  "5": [
+    "CEO"
+  ],
+  "6": [
+    "investors"
+  ],
+  "7": [
+    "protestors"
+  ],
+  "8": [
+    "activists"
+  ]
+}
+```
 
-![phrasematchesjson](https://user-images.githubusercontent.com/58263228/114309656-93f3f780-9af0-11eb-8d30-63ef6ef32332.png)
+#### Dependency-Matcher queries:
+```json
+{
+  "1":
+  [{
+    "RIGHT_ID": "poses",
+    "RIGHT_ATTRS": {"ORTH": "poses"}
+  },
+  {
+    "LEFT_ID": "poses",
+    "REL_OP": ">",
+    "RIGHT_ID": "threat",
+    "RIGHT_ATTRS": {"ORTH": "threat"}
+  }],
+   "2":
+  [{
+    "RIGHT_ID": "conflict",
+    "RIGHT_ATTRS": {"ORTH": "conflict"}
+  },
+    {
+      "LEFT_ID": "conflict",
+      "REL_OP": ">",
+      "RIGHT_ID": "about",
+      "RIGHT_ATTRS": {
+        "DEP": "prep"
+      }
+    }],
+   "3":
+  [{
+        "RIGHT_ID": "anchor_sue",
+        "RIGHT_ATTRS": {"ORTH": "sue"}
+    },
+    {
+        "LEFT_ID": "anchor_sue",
+        "REL_OP": ">",
+        "RIGHT_ID": "founded_subject",
+        "RIGHT_ATTRS": {"DEP": "nsubj"}
+    },
+    {
+        "LEFT_ID": "anchor_sue",
+        "REL_OP": ">",
+        "RIGHT_ID": "founded_object",
+        "RIGHT_ATTRS": {"DEP": "dobj"}
+    }]
 
-#### Below are the dependency matcher test cases
+}
+```
 
-![dependency matches](https://user-images.githubusercontent.com/58263228/114309692-b9810100-9af0-11eb-81df-d9385a46bb75.png)
 
-Result when quering for barack obama:
+#### Phrase matcher results(html renders):
+![1](https://user-images.githubusercontent.com/58263228/114451111-8a958880-9bdf-11eb-8bc9-cc3b885b5828.png)
+![2](https://user-images.githubusercontent.com/58263228/114451116-8b2e1f00-9bdf-11eb-8ff8-ac05f5b81f55.png)
+![3](https://user-images.githubusercontent.com/58263228/114451120-8c5f4c00-9bdf-11eb-8d1a-e7d7cf8160d0.png)
+![4](https://user-images.githubusercontent.com/58263228/114451122-8d907900-9bdf-11eb-9b4f-bde1f87c79fa.png)
+![5](https://user-images.githubusercontent.com/58263228/114451127-8ec1a600-9bdf-11eb-8137-2e3480422727.png)
+![6](https://user-images.githubusercontent.com/58263228/114451133-8ff2d300-9bdf-11eb-97c7-dabf5228a697.png)
+![7](https://user-images.githubusercontent.com/58263228/114451144-941ef080-9bdf-11eb-95fc-84a088954d1f.png)
 
-![barack-all](https://user-images.githubusercontent.com/58263228/114309707-c9004a00-9af0-11eb-85a0-62c9f42e6ad8.png)
 
-This query uses this configuration in scripts/visualize.py(it doesn't exclude any entity tags):
+These renders above use this configuration in scripts/visualize.py(they don't exclude any entity tags):
 ![dependency option render](https://user-images.githubusercontent.com/58263228/114312942-374b0980-9afd-11eb-80b8-1364a113a90c.png)
 
-The "sue" example(we are only displaying organizations):
+The "sue" dependency example(we are only displaying organizations):
 
 ![dependency3render](https://user-images.githubusercontent.com/58263228/114312907-0b2f8880-9afd-11eb-905f-a7e16781e867.png)
 
@@ -128,19 +206,7 @@ We can also,as mentioned before display the dependencies(test case of finding co
 
 ![dependency option render](https://user-images.githubusercontent.com/58263228/114313147-facbdd80-9afd-11eb-811e-062fd0000652.png)
 
-## Some more examples:
-
-
-"Drug":
-![phraserender6](https://user-images.githubusercontent.com/58263228/114313213-5007ef00-9afe-11eb-9d21-4d0d78e8c002.png)
-
-"Banks"(displaying only organizations):
-![phrase5](https://user-images.githubusercontent.com/58263228/114313228-5a29ed80-9afe-11eb-9aa4-d30504400e5f.png)
-
-Obama query and displaying only countries:
-![obama-countries](https://user-images.githubusercontent.com/58263228/114313245-70d04480-9afe-11eb-9413-ecdfd1b22191.png)
-
-### Some other ideas include:
+#### Some other ideas include:
 * find all mentions of "ministry" and determine which country's is mentioned for and its type (ex.the "French Ministry of Defense"), and then we add up the number of times it appears for each ministry.(ex.French Ministry of Defense appeared 10 times)
 * protestors (british protestors,violent protestors etc) and then again find their frequencies
 * find information that relates to money using the money tag of spacy
