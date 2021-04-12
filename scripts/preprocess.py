@@ -14,7 +14,7 @@ def main(
     nlp = en_core_web_lg.load()
 
     doc_bin = DocBin()
-    texts = pd.read_csv(input_path)[:10000]
+    texts = pd.read_csv(input_path)
     for doc in nlp.pipe(texts["title"], n_process=6):
         doc_bin.add(doc)
 
