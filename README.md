@@ -279,3 +279,11 @@ One visualization idea concerning geographical regions(since this dataset heavil
 https://github.com/nithishr/streamlit-data-viz-demo
 
 So we could for example select a month in 2013 and a map would pinpoint locations that were mentioned in posts.We could also give a color gradient to a certain location depending on the percentage of positive/negative sentiment,green for positive sentiment,red for negative sentiment.If someone hovered on a location he would see the percentage of positive/negative posts and also a hyperlink to the positive or negative,neutral posts where the user would be able to see all of the posts listed.However,that's beyond the scope for a job audition but it would be very interesting to implement in case the hiring proccess continues or/and if it was a desired feature.One simpler/more general thing to do would be to color gradient the percentage of positive/negative posts.
+
+# Other interesting NLP applications for Eluvio's content
+
+**Hugginface has transformer models that have numerous applications that would help Eluvio in:**
+* Question Answering with distil-bert,bert.For example "Brad Pitt in the movie x portrays what character?Answer: a box fighter"
+* Summarization of movie scripts with distil-bert,bert.
+* Translation of movie scripts/subtitle creation with t5
+* Using models such gpt2/distil gpt-2 to help with content generation for artists/creators or creating queries for gpt3's paid api which is not open-sourced unfortunately.
