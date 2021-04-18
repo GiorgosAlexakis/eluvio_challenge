@@ -71,7 +71,7 @@ Commands are only re-run if their inputs have changed.
 | `dependencymatch` | Runs some dependency matching examples from a json file(assets/dependencymatches.json) |
 | `VisualizePhraseResults` | It visualizes phrase matched results  |
 | `VisualizeDependencyResults` | It visualizes dependency matched results  |
-| `ClusterEntities` | For each named entity of types:ORG(Organization),GPE(Geographical location),PROD(Product) we are displaying the number of times it has been mentioned in posts and also what percentage of them are positive/negative |
+| `ClusterEntities` | For some named entity types we are displaying the number of times it has been mentioned in posts and also what number of them are of positive/negative semtiment using TextBlob |
 
 ### ⏭ Workflows
 
