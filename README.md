@@ -71,6 +71,7 @@ Commands are only re-run if their inputs have changed.
 | `dependencymatch` | Runs some dependency matching examples from a json file(assets/dependencymatches.json) |
 | `VisualizePhraseResults` | It visualizes phrase matched results  |
 | `VisualizeDependencyResults` | It visualizes dependency matched results  |
+| `ClusterEntities` | For each named entity of types:ORG(Organization),GPE(Geographical location),PROD(Product) we are displaying the number of times it has been mentioned in posts and also what percentage of them are positive/negative |
 
 ### ⏭ Workflows
 
@@ -81,7 +82,8 @@ inputs have changed.
 
 | Workflow | Steps |
 | --- | --- |
-| `all` | `preprocess` &rarr; `phrasematch` &rarr; `dependencymatch` &rarr; `VisualizePhraseResults` &rarr; `VisualizeDependencyResults` |
+| `matcher` | `preprocess` &rarr; `phrasematch` &rarr; `dependencymatch` &rarr; `VisualizePhraseResults` &rarr; `VisualizeDependencyResults` |
+| `cluster` | `preprocess` &rarr; `ClusterEntities` |
 
 ### 🗂 Assets
 
@@ -93,6 +95,7 @@ in the project directory.
 | --- | --- | --- |
 | [`assets/Eluvio_DS_Challenge.csv`](assets/Eluvio_DS_Challenge.csv) | Local | CSV data given from Eluvio |
 | [`assets/phrasematches.json`](assets/phrasematches.json) | Local | JSON-formatted input phrase matches for testing |
+| [`assets/dependencymatches.json`](assets/dependencymatches.json) | Local | JSON-formatted input dependency matches for testing |
 
 <!-- SPACY PROJECT: AUTO-GENERATED DOCS END (do not remove) -->
 ### Rule-based matching
