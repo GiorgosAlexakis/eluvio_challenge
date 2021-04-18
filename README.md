@@ -275,3 +275,7 @@ You can find more information/customize in the cluster_entities.py script .I hav
 * ### PRODUCT
 ![PRODUCT](https://user-images.githubusercontent.com/58263228/115154452-9c65a880-a083-11eb-91b5-099cac4d89d5.png)
 
+One visualization idea concerning geographical regions(since this dataset heavily mentions geopolitical events/news) was to pinpoint locations in a Global Map during  a certain time range using Streamlit(similar project):
+https://github.com/nithishr/streamlit-data-viz-demo
+
+So we could for example select a month in 2013 and a map would pinpoint locations that were mentioned in posts.We could also give a color gradient to a certain location depending on the percentage of positive/negative sentiment,green for positive sentiment,red for negative sentiment.If someone hovered on a location he would see the percentage of positive/negative posts and also a hyperlink to the positive or negative,neutral posts where the user would be able to see all of the posts listed.However,that's beyond the scope for a job audition but it would be very interesting to implement in case the hiring proccess continues or/and if it was a desired feature.
