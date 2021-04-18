@@ -4,7 +4,7 @@ description: " Eluvio's challenge in predictive modelling or analytical insights
 vars:
   config: "config.cfg"
   name: "eluvio_projects"
-  version: "0.0.0"
+  version: "0.0.1"
   dataset: "Eluvio_DS_Challenge"
   processed_dataset: "eluvio_processed_dataset"
   phrase_matches_input: "phrasematches"
@@ -17,7 +17,7 @@ vars:
 
 # These are the directories that the project needs. The project CLI will make
 # sure that they always exist.
-directories: ["assets", "configs", "scripts", "corpus","outputs","outputs/matches_keys","outputs/matches_text","outputs/matches_renders"]
+directories: ["assets", "configs", "scripts", "corpus","outputs","outputs/matches_keys","outputs/matches_text","outputs/matches_renders","outputs/entity_clusters"]
 
 # Assets that should be downloaded or available in the directory. We're shipping
 # them with the project, so they won't have to be downloaded.
@@ -27,19 +27,23 @@ assets:
     description: "CSV data given from Eluvio"
   - dest: "assets/${vars.phrase_matches_input}.json"
     description: "JSON-formatted input phrase matches for testing"
-
+  - dest: "assets/${vars.dependency_matches_input}.json"
+    description: "JSON-formatted input dependency matches for testing"
 
 
 # Workflows are sequences of commands (see below) executed in order. You can
 # run them via "spacy project run [workflow]". If a commands's inputs/outputs
 # haven't changed, it won't be re-run.
 workflows:
-  all:
+  matcher:
     - preprocess
     - phrasematch
     - dependencymatch
     - VisualizePhraseResults
     - VisualizeDependencyResults
+  cluster:
+    - preprocess
+    - ClusterEntities
 
 # Project commands, specified in a style similar to CI config files (e.g. Azure
 # pipelines). The name is the command name that lets you trigger the command
@@ -109,3 +113,14 @@ commands:
       - "scripts/visualize_results.py"
     outputs:
       - "outputs/matches_renders"
+
+  - name: "ClusterEntities"
+    help: "For each named entity of types:ORG(Organization),GPE(Geographical location),PROD(Product) we are displaying the number of times it has been mentioned
+    in posts and also what percentage of them are positive/negative"
+    script:
+      - "python scripts/cluster_entities.py  corpus/${vars.processed_dataset}.spacy outputs/entity_clusters "
+
+    deps:
+      - "corpus/${vars.processed_dataset}.spacy"
+    outputs:
+      - "outputs/entity_clusters"
